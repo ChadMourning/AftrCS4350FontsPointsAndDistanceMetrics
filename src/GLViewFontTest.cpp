@@ -35,10 +35,11 @@
 
 //If we want to use way points, we need to include this.
 #include "FontTestWayPoints.h"
+#include "FTGLString.h"
 #include "WOFTGLString.h"
-#include "WOGUILabel.h"
+//#include "WOGUILabel.h"
 #include "MGLFTGLString.h"
-#include "WOGUITextBox.h"
+//#include "WOGUITextBox.h"
 #include "WOCameraSink.h"
 #include "AftrFrameBufferObject.h"
 #include "MGLPointSetShaderAccelerated.h"
@@ -392,9 +393,9 @@ void GLViewFontTest::loadMap()
    this->actorLst = new WorldList();
    this->netLst = new WorldList();
 
-   ManagerOpenGLState::GL_CLIPPING_PLANE = 1000.0;
-   ManagerOpenGLState::GL_NEAR_PLANE = 0.1f;
-   ManagerOpenGLState::enableFrustumCulling = false;
+   ManagerOpenGLState::GL_CLIPPING_PLANE( 1000.0 );
+   ManagerOpenGLState::GL_NEAR_PLANE( 0.1f );
+   ManagerOpenGLState::enableFrustumCulling( false );
    Axes::isVisible = true;
    this->glRenderer->isUsingShadowMapping( false ); //set to TRUE to enable shadow mapping, must be using GL 3.2+
 
@@ -445,14 +446,14 @@ void GLViewFontTest::loadMap()
    
    std::string comicSans = ManagerEnvironmentConfiguration::getLMM() + "/fonts/overwatch_text.ttf";
 
-   WOGUILabel* label = WOGUILabel::New(nullptr);
-   label->setText("some text");
-   label->setColor( 255,0,0,255 );
-   label->setFontSize(30);//font size is correlated with world size
-   label->setPosition(Vector(0, 1, 0));
-   label->setFontOrientation(FONT_ORIENTATION::foLEFT_TOP);
-   label->setFontPath(comicSans);
-   worldLst->push_back(label);
+   //WOGUILabel* label = WOGUILabel::New(nullptr);
+   //label->setText("some text");
+   //label->setColor( 255,0,0,255 );
+   //label->setFontSize(30);//font size is correlated with world size
+   //label->setPosition(Vector(0, 1, 0));
+   //label->setFontOrientation(FONT_ORIENTATION::foLEFT_TOP);
+   //label->setFontPath(comicSans);
+   //worldLst->push_back(label);
 
    WOFTGLString* string = WOFTGLString::New(comicSans,30);//front size should not be confused with world size
    string->getModelT<MGLFTGLString>()->setFontColor(aftrColor4f( 1.0f,0.0f,0.0f,1.0f ));
